@@ -13,7 +13,9 @@ To use FLComposeViewController:
 
 2. Add the Quartz Core framework to your project.
 
-3. Instantiate `FLComposeViewController` and set its root view controller.
+3. Enable `UIViewEdgeAntialiasing` ("Renders with edge antialiasing") in your `Info.plist` file.
+
+4. Instantiate `FLComposeViewController` and set its root view controller.
 
 If you use storyboards, you might want to manually instantiate the initial view controller in your app delegate  and set it as the root view controller of your `FLComposeViewController` object:
 
