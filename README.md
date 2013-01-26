@@ -65,7 +65,7 @@ FLComposeViewController uses comments in [appledoc][] format. The `appledoc.sh` 
 
 ## Credits
 
-FLComposeViewController was created by [Fernando Tarlá Cardoso Lemos](fernandotcl@gmail.com).
+FLComposeViewController was created by [Fernando Tarlá Cardoso Lemos](mailto:fernandotcl@gmail.com).
 
 ## License
 
