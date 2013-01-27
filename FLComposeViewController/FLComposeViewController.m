@@ -244,14 +244,9 @@
                                       fromViewController:(UIViewController *)fromViewController
                                               withSender:(id)sender
 {
-    NSEnumerator *enumerator = self.childViewControllers.reverseObjectEnumerator;
-    for (UIViewController *child in enumerator) {
-        UIViewController *controller = [child viewControllerForUnwindSegueAction:action
-                                                              fromViewController:fromViewController
-                                                                      withSender:sender];
-        if (controller) {
-            return controller;
-        }
+    for (UIViewController *child in self.childViewControllers) {
+        if ([child canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender])
+            return child;
     }
 
     return [super viewControllerForUnwindSegueAction:action
