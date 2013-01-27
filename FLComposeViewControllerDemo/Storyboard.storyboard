@@ -31,11 +31,11 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z7D-Ug-Mem">
-                                <rect key="frame" x="20" y="163" width="280" height="221"/>
+                                <rect key="frame" x="20" y="173" width="280" height="201"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <string key="text">This is the main screen. If you tap the "Compose" button, you will be taken to the modal screen through the compose view controller.
 
-If you tap the "Modal" button, though, you will see the regular modal presentation animation. You can even use a navigation view controller as the root view controller of the compose view controller, for example.</string>
+If you tap the "Modal" button, you will see the regular modal presentation animation. If you want to nest container view controllers, though, you might not be able to use segues.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.30143704379562042" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

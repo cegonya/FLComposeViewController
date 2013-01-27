@@ -57,7 +57,7 @@ If you're not using storyboards, you can still use FLComposeViewController. The 
 }
 ```
 
-You can mix and match storyboards, nibs and programatically created view controllers, of course. You can also use other container view controllers such as `UINavigationViewController` as parents or children of `FLComposeViewController` objects.
+You can mix and match storyboards, nibs and programatically created view controllers, of course. You can also use other container view controllers such as `UINavigationViewController` as parents or children of `FLComposeViewController` objects. If you nest container view controllers, though, you may not be able to use container-specific segues directly from the storyboard.
 
 ## Documentation
 
