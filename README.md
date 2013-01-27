@@ -59,6 +59,10 @@ If you're not using storyboards, you can still use FLComposeViewController. The 
 
 You can mix and match storyboards, nibs and programatically created view controllers, of course. You can also use other container view controllers such as `UINavigationViewController` as parents or children of `FLComposeViewController` objects. If you nest container view controllers, though, you may not be able to use container-specific segues directly from the storyboard.
 
+## Requirements
+
+FLComposeViewController requires iOS 5.0 or greater and uses ARC. If you are using FLComposeViewController in a non-ARC project, you will need to set the `-fobjc-arc` compiler flag on all of the FLComposeViewController source files.
+
 ## Documentation
 
 FLComposeViewController uses comments in [appledoc][] format. The `appledoc.sh` script can be used to create a `help` folder and populate it with documentation generated from the source comments.
