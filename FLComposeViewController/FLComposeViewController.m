@@ -177,6 +177,7 @@
         [controller didMoveToParentViewController:self];
 
         _animating = NO;
+        [self resetRootViewContainerEffect];
     };
 
     if (animated) {
@@ -237,9 +238,8 @@
 
 - (void)viewDidLayoutSubviews
 {
-    if (!_animating && self.isPresentingComposeModalViewController) {
-        _rootViewContainer.frame = self.view.bounds;
-        [self performRootViewContainerEffect];
+    if (!_animating) {
+        [self resetRootViewContainerEffect];
     }
 }
 
@@ -253,6 +253,16 @@
 - (void)undoRootViewContainerEffect
 {
     _rootViewContainer.layer.transform = CATransform3DIdentity;
+}
+
+- (void)resetRootViewContainerEffect
+{
+    [self undoRootViewContainerEffect];
+    _rootViewContainer.frame = self.view.bounds;
+
+    if (self.isPresentingComposeModalViewController) {
+        [self performRootViewContainerEffect];
+    }
 }
 
 #pragma mark - Properties
