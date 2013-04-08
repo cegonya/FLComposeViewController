@@ -1,5 +1,3 @@
-**WARNING**: FLComposeViewController requires **iOS 6.0** now. See 45831be8f49be78ae3fb1ba70c28284efe770bf8 for the rationale.
-
 **WARNING**: `presentModalViewController:animated:` and `dismissModalViewController:animated:` are no longer overriden. For existing code, you **must** use `presentComposeModalViewController:animated:` and `dismissComposeModalViewController:animated:` instead. See 2635467484e79d31ccf404ef6db9ecbeebab8f35 for the rationale.
 
 ## Introduction
@@ -65,7 +63,7 @@ You can mix and match storyboards, nibs and programatically created view control
 
 ## Requirements
 
-FLComposeViewController requires iOS 6.0 or greater and uses ARC. If you are using FLComposeViewController in a non-ARC project, you will need to set the `-fobjc-arc` compiler flag on all of the FLComposeViewController source files.
+FLComposeViewController requires iOS 5.0 or greater and uses ARC. If you are using FLComposeViewController in a non-ARC project, you will need to set the `-fobjc-arc` compiler flag on all of the FLComposeViewController source files.
 
 ## Documentation
 

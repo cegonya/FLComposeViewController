@@ -103,7 +103,7 @@
     _modalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods
+- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers
 {
     return NO;
 }
@@ -126,6 +126,31 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [self.topModalViewController endAppearanceTransition];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration
+{
+    for (UIViewController *controller in self.childViewControllers) {
+        [controller willRotateToInterfaceOrientation:toInterfaceOrientation
+                                            duration:duration];
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+    for (UIViewController *controller in self.childViewControllers) {
+        [controller willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
+                                                     duration:duration];
+    }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    for (UIViewController *controller in self.childViewControllers) {
+        [controller didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    }
 }
 
 #pragma mark - Presenting the compose view controller
