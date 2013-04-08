@@ -30,7 +30,8 @@
 
 @implementation MainViewController
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [self.navigationBar sizeToFit];
 }
 

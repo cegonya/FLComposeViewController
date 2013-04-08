@@ -133,8 +133,9 @@
 {
     NSAssert(!self.isPresentingComposeModalViewController, @"A compose view controller is already being presented");
 
-    if (!self.isViewLoaded)
+    if (!self.isViewLoaded) {
         [self loadView];
+    }
 
     [self.rootViewController beginAppearanceTransition:NO animated:animated];
     [controller beginAppearanceTransition:YES animated:animated];
@@ -229,15 +230,17 @@
 {
     // We reset the transform of the root view container here to avoid
     // glitches when the orientation changes
-    if (self.isPresentingComposeModalViewController)
+    if (self.isPresentingComposeModalViewController) {
         [self undoRootViewContainerEffect];
+    }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     // After the rotation, we can restore the transform
-    if (self.isPresentingComposeModalViewController)
+    if (self.isPresentingComposeModalViewController) {
         [self performRootViewContainerEffect];
+    }
 }
 
 #pragma mark - Helper functions
@@ -286,8 +289,9 @@
                                               withSender:(id)sender
 {
     for (UIViewController *child in self.childViewControllers) {
-        if ([child canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender])
+        if ([child canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender]) {
             return child;
+        }
     }
 
     return [super viewControllerForUnwindSegueAction:action
