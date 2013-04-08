@@ -61,7 +61,7 @@ You can mix and match storyboards, nibs and programatically created view control
 
 ## Requirements
 
-FLComposeViewController requires iOS 5.0 or greater and uses ARC. If you are using FLComposeViewController in a non-ARC project, you will need to set the `-fobjc-arc` compiler flag on all of the FLComposeViewController source files.
+FLComposeViewController requires iOS 6.0 or greater and uses ARC. If you are using FLComposeViewController in a non-ARC project, you will need to set the `-fobjc-arc` compiler flag on all of the FLComposeViewController source files.
 
 ## Documentation
 
