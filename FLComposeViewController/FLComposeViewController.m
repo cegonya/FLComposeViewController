@@ -29,6 +29,8 @@
 
 @property (readonly, nonatomic, assign) UIViewController *presentedModalViewController;
 
+@property (readonly, nonatomic, assign) UIViewController *topModalViewController;
+
 @end
 
 @implementation FLComposeViewController {
@@ -97,6 +99,31 @@
     _modalViewContainer = [[UIView alloc] initWithFrame:frame];
     _modalViewContainer.backgroundColor = [UIColor blackColor];
     _modalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods
+{
+    return NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.topModalViewController beginAppearanceTransition:YES animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.topModalViewController endAppearanceTransition];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.topModalViewController beginAppearanceTransition:NO animated:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.topModalViewController endAppearanceTransition];
 }
 
 #pragma mark - Presenting the compose view controller
@@ -241,6 +268,15 @@
 - (UIViewController *)presentedModalViewController
 {
     return self.childViewControllers[1];
+}
+
+- (UIViewController *)topModalViewController
+{
+    if (self.isPresentingComposeModalViewController) {
+        return self.presentedModalViewController;
+    } else {
+        return self.rootViewController;
+    }
 }
 
 #pragma mark - Storyboard support
