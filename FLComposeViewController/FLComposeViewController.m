@@ -81,11 +81,11 @@
     transform.m34 = 1.0f / -500.0f;
     self.view.layer.sublayerTransform = transform;
 
-    // The frame must be offset, as we're changing the anchor point
-    frame = self.view.bounds;
-    frame.origin.y += frame.size.height / 2.0f;
-    _rootViewContainer = [[UIView alloc] initWithFrame:frame];
+    // Set the anchor point before we set the frame, so
+    // we don't have to offset the frame
+    _rootViewContainer = [UIView new];
     _rootViewContainer.layer.anchorPoint = CGPointMake(0.5f, 1.0f);
+    _rootViewContainer.frame = self.view.bounds;
     _rootViewContainer.backgroundColor = [UIColor blackColor];
     _rootViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_rootViewContainer];
