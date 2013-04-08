@@ -98,7 +98,7 @@
 
     [self.rootViewController didMoveToParentViewController:self];
 
-    _modalViewContainer = [[UIView alloc] initWithFrame:frame];
+    _modalViewContainer = [UIView new];
     _modalViewContainer.backgroundColor = [UIColor blackColor];
     _modalViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
@@ -139,14 +139,14 @@
         [self loadView];
     }
 
-    [self.rootViewController beginAppearanceTransition:NO animated:animated];
-    [controller beginAppearanceTransition:YES animated:animated];
-
-    [self addChildViewController:controller];
+    CGRect frame = self.view.bounds;
+    frame.origin.y = frame.size.height;
+    _modalViewContainer.frame = frame;
 
     UIView *modalView = controller.view;
     modalView.frame = _modalViewContainer.bounds;
     modalView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     [_modalViewContainer addSubview:modalView];
 
     _rootViewContainerMask = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -155,10 +155,12 @@
     _rootViewContainerMask.alpha = 0;
     [self.view addSubview:_rootViewContainerMask];
 
-    CGRect frame = self.view.bounds;
-    frame.origin.y = frame.size.height;
-    _modalViewContainer.frame = frame;
     [self.view addSubview:_modalViewContainer];
+
+    [self.rootViewController beginAppearanceTransition:NO animated:animated];
+    [controller beginAppearanceTransition:YES animated:animated];
+
+    [self addChildViewController:controller];
 
     void (^animations)(void) = ^{
         [self performRootViewContainerEffect];
