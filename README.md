@@ -1,4 +1,4 @@
-**WARNING**: `presentModalViewController:animated:` and `dismissModalViewController:animated:` are no longer overriden. For existing code, you **must** use `presentComposeModalViewController:animated:` and `dismissComposeModalViewController:animated:` instead. See 2635467484e79d31ccf404ef6db9ecbeebab8f35 for the rationale.
+**WARNING**: `presentModalViewController:animated:` and `dismissModalViewController:animated:` are no longer overriden. For existing code, you **must** use `presentComposeModalViewController:animated:` and `dismissComposeModalViewController:animated:` instead.
 
 ## Introduction
 
