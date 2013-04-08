@@ -38,6 +38,8 @@
     UIView *_modalViewContainer;
 
     UIView *_rootViewContainerMask;
+
+    BOOL _animating;
 }
 
 #pragma mark - Initializers
@@ -171,9 +173,12 @@
         [self.rootViewController endAppearanceTransition];
 
         [controller didMoveToParentViewController:self];
+
+        _animating = NO;
     };
 
     if (animated) {
+        _animating = YES;
         [UIView animateWithDuration:self.animationDuration animations:animations completion:completion];
     } else {
         animations();
@@ -213,9 +218,12 @@
 
         [composeViewController.view removeFromSuperview];
         [composeViewController removeFromParentViewController];
+
+        _animating = NO;
     };
 
     if (animated) {
+        _animating = YES;
         [UIView animateWithDuration:self.animationDuration animations:animations completion:completion];
     } else {
         animations();
@@ -223,27 +231,17 @@
     }
 }
 
-#pragma mark - Rotation
+#pragma mark - Layout
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration
+- (void)viewDidLayoutSubviews
 {
-    // We reset the transform of the root view container here to avoid
-    // glitches when the orientation changes
-    if (self.isPresentingComposeModalViewController) {
-        [self undoRootViewContainerEffect];
-    }
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    // After the rotation, we can restore the transform
-    if (self.isPresentingComposeModalViewController) {
+    if (!_animating && self.isPresentingComposeModalViewController) {
+        _rootViewContainer.frame = self.view.bounds;
         [self performRootViewContainerEffect];
     }
 }
 
-#pragma mark - Helper functions
+#pragma mark - Helper methods
 
 - (void)performRootViewContainerEffect
 {
