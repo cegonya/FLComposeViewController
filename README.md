@@ -7,6 +7,8 @@ FLComposeViewController is an [iOS container view controller][containers] that p
 [containers]: http://developer.apple.com/library/ios/#featuredarticles/ViewControllerPGforiPhoneOS/CreatingCustomContainerViewControllers/CreatingCustomContainerViewControllers.html
 [gmailapp]: https://itunes.apple.com/us/app/gmail-email-from-google/id422689480?mt=8
 
+![FLComposeViewController screenshot](https://raw.github.com/fernandotcl/FLComposeViewController/master/screenshot.png)
+
 ## Getting started
 
 To use FLComposeViewController:
