@@ -110,6 +110,7 @@
         [self loadView];
 
     [self.rootViewController beginAppearanceTransition:NO animated:animated];
+    [controller beginAppearanceTransition:YES animated:animated];
 
     [self addChildViewController:controller];
 
@@ -138,9 +139,10 @@
     };
 
     void (^completion)(BOOL) = ^(BOOL finished) {
-        [controller didMoveToParentViewController:self];
-
+        [controller endAppearanceTransition];
         [self.rootViewController endAppearanceTransition];
+
+        [controller didMoveToParentViewController:self];
     };
 
     if (animated) {
@@ -155,9 +157,11 @@
 {
     NSAssert(self.isPresentingComposeModalViewController, @"No compose view controller is being presented");
 
+    UIViewController *composeViewController = self.presentedModalViewController;
+
+    [composeViewController beginAppearanceTransition:NO animated:animated];
     [self.rootViewController beginAppearanceTransition:YES animated:animated];
 
-    UIViewController *composeViewController = self.presentedModalViewController;
     [composeViewController willMoveToParentViewController:nil];
 
     void (^animations)(void) = ^{
@@ -176,10 +180,11 @@
 
         [_modalViewContainer removeFromSuperview];
 
+        [self.rootViewController endAppearanceTransition];
+        [composeViewController endAppearanceTransition];
+
         [composeViewController.view removeFromSuperview];
         [composeViewController removeFromParentViewController];
-
-        [self.rootViewController endAppearanceTransition];
     };
 
     if (animated) {
