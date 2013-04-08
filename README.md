@@ -1,3 +1,5 @@
+**WARNING**: `presentModalViewController:animated:` and `dismissModalViewController:animated:` are no longer overriden. For existing code, you **must** use `presentComposeModalViewController:animated:` and `dismissComposeModalViewController:animated:` instead. See 2635467484e79d31ccf404ef6db9ecbeebab8f35 for the rationale.
+
 ## Introduction
 
 FLComposeViewController is an [iOS container view controller][containers] that presents modal view controllers. The presentation animations are heavily inspired by the [Gmail iOS app][gmailapp].
