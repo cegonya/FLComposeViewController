@@ -23,7 +23,7 @@
 /**
  The `FLComposeViewController` class implements a view controller container that can present modal view controllers. The modal view controllers are presented with an animation style that resembles the message composition animation in the Gmail app for iOS.
 
- In its initial state, the compose view controller presents its root view controller. A modal view controller may be presented on top of the root view controller at any time by calling presentModalViewController:animated:. When presented, the modal view completely obscures the root view. Both the root view and the modal view are resized to fill the entire screen.
+ In its initial state, the compose view controller presents its root view controller. A modal view controller may be presented on top of the root view controller at any time by calling `presentComposeModalViewController:animated:`. When presented, the modal view completely obscures the root view. Both the root view and the modal view are resized to fill the entire screen.
 
  When using storyboards, the presentation and dismissal of the modal view controller may be performed by a FLComposeViewControllerSegue object.
  */
@@ -90,8 +90,8 @@
 
  @param animated Pass `YES` to animate the presentation; otherwise, pass `NO`.
  */
-- (void)presentModalViewController:(UIViewController *)controller
-                          animated:(BOOL)animated;
+- (void)presentComposeModalViewController:(UIViewController *)controller
+                                 animated:(BOOL)animated;
 
 /**
  Dismisses the modal view controller that was presented by the receiver.
@@ -100,13 +100,13 @@
 
  @param animated Pass `YES` to animate the presentation; otherwise, pass `NO`.
  */
-- (void)dismissModalViewControllerAnimated:(BOOL)animated;
+- (void)dismissComposeModalViewControllerAnimated:(BOOL)animated;
 
 /**
  Returns a Boolean value that indicates that the receiver is presenting a modal view controller.
 
  @return `YES` if the receiver is presenting a modal view controller, otherwise `NO`.
  */
-@property (readonly, getter = isPresentingModalViewController, nonatomic, assign) BOOL presentingModalViewController;
+@property (readonly, getter = isPresentingComposeModalViewController, nonatomic, assign) BOOL presentingModalViewController;
 
 @end

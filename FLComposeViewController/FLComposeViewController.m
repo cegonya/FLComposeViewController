@@ -101,10 +101,10 @@
 
 #pragma mark - Presenting the compose view controller
 
-- (void)presentModalViewController:(UIViewController *)controller
-                            animated:(BOOL)animated
+- (void)presentComposeModalViewController:(UIViewController *)controller
+                                 animated:(BOOL)animated
 {
-    NSAssert(!self.isPresentingModalViewController, @"A compose view controller is already being presented");
+    NSAssert(!self.isPresentingComposeModalViewController, @"A compose view controller is already being presented");
 
     if (!self.isViewLoaded)
         [self loadView];
@@ -151,9 +151,9 @@
     }
 }
 
-- (void)dismissModalViewControllerAnimated:(BOOL)animated
+- (void)dismissComposeModalViewControllerAnimated:(BOOL)animated
 {
-    NSAssert(self.isPresentingModalViewController, @"No compose view controller is being presented");
+    NSAssert(self.isPresentingComposeModalViewController, @"No compose view controller is being presented");
 
     [self.rootViewController beginAppearanceTransition:YES animated:animated];
 
@@ -197,14 +197,14 @@
 {
     // We reset the transform of the root view container here to avoid
     // glitches when the orientation changes
-    if (self.isPresentingModalViewController)
+    if (self.isPresentingComposeModalViewController)
         [self undoRootViewContainerEffect];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     // After the rotation, we can restore the transform
-    if (self.isPresentingModalViewController)
+    if (self.isPresentingComposeModalViewController)
         [self performRootViewContainerEffect];
 }
 
@@ -228,7 +228,7 @@
     _rootViewController = rootViewController;
 }
 
-- (BOOL)isPresentingModalViewController
+- (BOOL)isPresentingComposeModalViewController
 {
     return self.childViewControllers.count == 2;
 }
@@ -259,7 +259,7 @@
                                               identifier:(NSString *)identifier
 {
     FLComposeViewController *parent = (FLComposeViewController *)fromViewController.parentViewController;
-    if ([parent isKindOfClass:[FLComposeViewController class]] && parent.isPresentingModalViewController) {
+    if ([parent isKindOfClass:[FLComposeViewController class]] && parent.isPresentingComposeModalViewController) {
         return [FLComposeViewControllerSegue segueWithIdentifier:identifier
                                                           source:fromViewController
                                                      destination:toViewController

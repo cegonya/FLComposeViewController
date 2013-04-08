@@ -54,9 +54,9 @@
     UIViewController *destination = (UIViewController *)self.destinationViewController;
 
     if (self.unwinding) {
-        [source.fl_parentComposeViewController dismissModalViewControllerAnimated:YES];
+        [source.fl_parentComposeViewController dismissComposeModalViewControllerAnimated:YES];
     } else {
-        [source.fl_parentComposeViewController presentModalViewController:destination animated:YES];
+        [source.fl_parentComposeViewController presentComposeModalViewController:destination animated:YES];
     }
 }
 

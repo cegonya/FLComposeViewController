@@ -56,7 +56,7 @@
 
  @param animated Pass `YES` to animate the presentation; otherwise, pass `NO`.
 
- @see [FLComposeViewController presentModalViewController:animated:]
+ @see [FLComposeViewController presentComposeModalViewController:animated:]
  */
 - (void)fl_presentComposeModalViewController:(UIViewController *)controller
                                     animated:(BOOL)animated;
@@ -68,7 +68,7 @@
 
  @param animated Pass `YES` to animate the presentation; otherwise, pass `NO`.
 
- @see [FLComposeViewController dismissModalViewControllerAnimated:]
+ @see [FLComposeViewController dismissComposeModalViewControllerAnimated:]
  */
 - (void)fl_dismissComposeModalViewControllerAnimated:(BOOL)animated;
 

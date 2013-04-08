@@ -35,12 +35,12 @@
 - (void)fl_presentComposeModalViewController:(UIViewController *)controller
                                     animated:(BOOL)animated
 {
-    [self.fl_parentComposeViewController presentModalViewController:controller animated:animated];
+    [self.fl_parentComposeViewController presentComposeModalViewController:controller animated:animated];
 }
 
 - (void)fl_dismissComposeModalViewControllerAnimated:(BOOL)animated
 {
-    [self.fl_parentComposeViewController dismissModalViewControllerAnimated:animated];
+    [self.fl_parentComposeViewController dismissComposeModalViewControllerAnimated:animated];
 }
 
 @end
